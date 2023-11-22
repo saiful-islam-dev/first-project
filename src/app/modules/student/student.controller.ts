@@ -29,7 +29,7 @@ const createStudent = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Something went worng',
+      message: error.message || 'Something went worng',
       error: error,
     });
   }
