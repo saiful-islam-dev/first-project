@@ -19,18 +19,24 @@ const createStudentIntoDB = async (studentData: TStudent) => {
   return result;
 };
 
-const gellAllStudentFromDB = async () => {
+const getAllStudentFromDB = async () => {
   const result = await Student.find();
   return result;
 };
 
-const gellSingleStudentFromDB = async (id: string) => {
+const getSingleStudentFromDB = async (id: string) => {
   const result = await Student.findOne({ id });
   return result;
 };
 
-export const StudentService = {
+const deletedStudentFromDB = async (id: string) => {
+  const result = await Student.updateOne({ id }, { isDeleted: true });
+  return result;
+};
+
+export const StudentServices = {
   createStudentIntoDB,
-  gellAllStudentFromDB,
-  gellSingleStudentFromDB,
+  getAllStudentFromDB,
+  getSingleStudentFromDB,
+  deletedStudentFromDB,
 };

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import config from './app/index';
+import config from './app/config/index';
 import app from './app';
 
 // main().catch(err => console.log(err));
