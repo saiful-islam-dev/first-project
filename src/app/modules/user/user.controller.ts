@@ -1,11 +1,9 @@
-import { NextFunction, Request, Response } from 'express';
+import { RequestHandler } from 'express';
 import { UserService } from './user.service';
+import sendResponse from '../../utils/sendResponse';
+import httpStatus from 'http-status';
 
-const createStudent = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
+const createStudent: RequestHandler = async (req, res, next) => {
   try {
     const { password, student: studentData } = req.body;
 
@@ -13,12 +11,12 @@ const createStudent = async (
 
     const result = await UserService.createStudentIntoDB(password, studentData);
 
-    res.status(200).json({
-      success: true,
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      susscess: true,
       message: 'Student is created succesfully',
       data: result,
     });
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err) {
     next(err);
   }
