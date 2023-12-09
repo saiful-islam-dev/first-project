@@ -6,7 +6,6 @@ import { UserServices } from './user.service';
 const createStudent = catchAsync(async (req, res) => {
   const { password, student: studentData } = req.body;
 
-
   const result = await UserServices.createStudentIntoDB(password, studentData);
 
   sendResponse(res, {
@@ -17,6 +16,18 @@ const createStudent = catchAsync(async (req, res) => {
   });
 });
 
+const getAllUser = catchAsync(async (req, res) => {
+  const result = await UserServices.getAllUserFromDB();
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'User is retrieved succesfully',
+    data: result,
+  });
+});
+
 export const UserControllers = {
   createStudent,
+  getAllUser,
 };
