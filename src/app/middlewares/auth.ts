@@ -10,7 +10,6 @@ import { User } from '../modules/user/user.model';
 const auth = (...requiredRoles: TUserRoll[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const token = req.headers.authorization;
-
     // checking if the token is missing
     if (!token) {
       throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized!');
@@ -51,10 +50,13 @@ const auth = (...requiredRoles: TUserRoll[]) => {
     ) {
       throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized !');
     }
+
+    
     if (requiredRoles && !requiredRoles.includes(role)) {
       throw new AppError(httpStatus.UNAUTHORIZED, 'you are not authorization');
     }
 
+    req.user = decoded as JwtPayload;
     next();
   });
 };
