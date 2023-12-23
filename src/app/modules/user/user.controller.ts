@@ -2,8 +2,9 @@ import httpStatus from 'http-status';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import { UserServices } from './user.service';
+import { Request, Response } from 'express';
 
-const createStudent = catchAsync(async (req, res) => {
+const createStudent = catchAsync(async (req: Request, res: Response) => {
   const { password, student: studentData } = req.body;
 
   const result = await UserServices.createStudentIntoDB(password, studentData);
@@ -16,7 +17,7 @@ const createStudent = catchAsync(async (req, res) => {
   });
 });
 
-const createFaculty = catchAsync(async (req, res) => {
+const createFaculty = catchAsync(async (req: Request, res: Response) => {
   const { password, faculty: facultyData } = req.body;
 
   const result = await UserServices.createFacultyIntoDB(password, facultyData);
@@ -29,7 +30,7 @@ const createFaculty = catchAsync(async (req, res) => {
   });
 });
 
-const createAdmin = catchAsync(async (req, res) => {
+const createAdmin = catchAsync(async (req: Request, res: Response) => {
   const { password, admin: adminData } = req.body;
 
   const result = await UserServices.createAdminIntoDB(password, adminData);
