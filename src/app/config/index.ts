@@ -14,3 +14,9 @@ export default {
   jwt_access_expires_in: process.env.JWT_ACCESS_EXPIRES_IN,
   jwt_refresh_expires_in: process.env.JWT_REFRESH_EXPIRES_IN,
 };
+
+// NODE_ENV: deveopment
+// PORT=5000
+// DATABASE_URL=mongodb+srv://admin-um:VDHMKtgSjT1ivA8M@cluster0.qawsvmr.mongodb.net/first-project?retryWrites=true&w=majority
+// BCRYPT_SALT_ROUNDS=12
+// DEFAULT_PASS=phunivercity!@#
