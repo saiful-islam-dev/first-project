@@ -38,7 +38,7 @@ const auth = (...requiredRoles: TUserRoll[]) => {
     // checking if the user is blocked
     const userSetatus = user?.status;
     if (userSetatus === 'blocked') {
-      throw new AppError(httpStatus.FORBIDDEN, 'This user is blocked ! !');
+      throw new AppError(httpStatus.FORBIDDEN, 'This user is blocked !');
     }
 
     if (
@@ -51,7 +51,6 @@ const auth = (...requiredRoles: TUserRoll[]) => {
       throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized !');
     }
 
-    
     if (requiredRoles && !requiredRoles.includes(role)) {
       throw new AppError(httpStatus.UNAUTHORIZED, 'you are not authorization');
     }
